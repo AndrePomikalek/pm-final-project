@@ -1,17 +1,45 @@
-# Hypothesis & Success Metrics
+# Hypothesis & Success Metrics (Module 3)
 
-> **Module 3 · ★ Deliverable 3.** Repo file `03-analytics/hypothesis-and-metrics.md` — part of your submission.
-> Do the lab in the **Module 3 · Exercise Guide** (linked from the Module 3 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It feeds the **Problem, Value & Hypothesis** slide of your Module 6 final deck.
+## Pre-work · Hypothesis check
+- **Role , who you are solving for (from M2):** Consumers in the German pilot who cannot pay a debt in a lump sum and initiate the installment plan process themselves via the smartphone portal following a digital payment reminder. Mara’s profile: stable income that fluctuates due to shift work, one or more outstanding debts, limited time, and uncertainty regarding approval.
+- **Goal , what this user is ultimately trying to achieve:** She wants to settle the outstanding debts with an installment plan that she can manage given her fluctuating income, without worsening her situation.
+- **Friction / moment of misery , the specific pain blocking their goal:** Friction / Moment of Misery
+, the specific pain that blocks her goal
+- **Current workaround , the external tool or manual process they rely on (M2):** She looks for the answer outside the portal: on Google, in her own calculations—using an account, notes, or a spreadsheet—and in proof-of-income documents she cannot currently locate. If uncertainty remains, she abandons the process or calls in. The staff member then repeats the checks regarding identity, financial standing, and the specific case.
+- **Problem Hook , your one-sentence framing of the business crisis (M1):** As long as consumers on the portal cannot identify which installment plan they can actually manage, they either drop out or agree to plans that fail—and Riverty pays the price in the form of phone calls, more than half of its administrative workload, and a portfolio value masked by a rising self-service rate.
+- **Value Proposition , the outcome your initiative promised to deliver (M1):** Spotlight shows Mara which installment amount suits her fluctuating income before she commits, explains why income details are requested and what happens if a payment is missed, and indicates whether both obligations can be combined into a single plan. Daniel receives the input data, the rationale, and the case history, eliminating the need to repeat the review process; proof is required only in cases of uncertainty.
 
-## Finalized product hypothesis
+## Read your data snapshots
+- **Does the funnel data confirm your M2 friction point, or does it tell a different story? Note where the numbers align with the qualitative pain you found and where they diverge.:** _(not filled in)_
+- **Do the retention patterns align with the workaround your M2 persona used to find content? Note what the Mo. 0→1 drop suggests about the onboarding experience your persona described as frustrating.:** _(not filled in)_
+- **Does the LTV gap and the content mix (61% trending for Wanderers) confirm the moment of misery your persona described? Note which segment your persona is in and whether the data confirms their pain.:** _(not filled in)_
+- **Does the low adoption confirm your persona is burdened by tools they don’t use? Note whether the low scheduling adoption (42%) for coordinators matches your M2 moment of misery.:** _(not filled in)_
+- **Does the workflow data match the manual process or hack you documented in M2? Note whether the specific drop-offs or time gaps explain why your persona avoids the digital tool.:** _(not filled in)_
+- **Look at the CSAT heatmap. Which specific cell most directly maps to your persona’s friction? Note how the NPS trend justifies the urgency of your M1 Problem Hook.:** _(not filled in)_
 
-> Based on [qual + quant evidence], I believe that [solving X] for [persona] will result in [outcome], as measured by a [X%] change in [success metric]. I will protect [guardrail metric] and make a go/no-go decision after [decision window].
+## Step 3 · Craft your hypothesis
+- **Qualitative evidence (from M2) , quote the specific friction / moment of misery for your persona:** On the smartphone, the process requires proof of income, yet it remains unclear whether the installment is affordable, why income information is being requested, what the consequences of a missed payment are, and whether the two requirements can be combined. Unable to tell if the plan will worsen her situation, Mara either abandons the process or calls. Evidence: "If the process confuses her or asks for documents she cannot easily locate, she calls a representative." Only 22% of portal visitors start the process; of those who do, 31% call within seven days, and 28% of the submitted proofs require subsequent clarification.
+- **Quantitative evidence (from M3) , name the metric or data point that confirms the pain; cite the number:** 31% of those who initiated the process contact a staff member within seven days. This confirms that the process was abandoned in favor of a phone call. Consistent with this is the fact that 28% of the uploaded proof-of-income documents require further clarification. No separate set of figures is available for Module 3. Both figures serve as the hypothetical baseline values ​​for the case study.
+- **Persona , role, goal, and the friction you confirmed in the reconciliation steps:** Persona: Mara is a consumer in the German pilot program with an income that is generally stable but fluctuates due to shift work, and she has one or more outstanding debts. She initiates the installment plan process on her smartphone after receiving a digital payment reminder.
 
-## Success metrics
+Goal: She wants to settle the debts via an installment plan she can realistically manage without worsening her financial situation.
 
-| Metric | Type | Target | Why it matters |
-|---|---|---|---|
-| _North-star_ | | _____ | _____ |
-| _Leading indicator_ | | _____ | _____ |
-| _Guardrail_ | | _____ | _____ |
+Confirmed friction points: The smartphone workflow requires proof of income, yet leaves several questions unanswered: Is the installment amount affordable? Why is income information being requested? What are the consequences of a missed payment? Can the two debts be combined? Consequently, she either abandons the process or calls customer service. The data confirms this pattern: only 22% of portal visitors start the process; of those who do, 31% contact a representative within seven days; and 28% of the submitted income proofs require subsequent clarification.
+- **Problem you are solving , one sentence describing the specific friction this initiative removes:** The initiative eliminates that moment on the smartphone when Mara is asked to provide proof of income—even though it remains unclear whether the installment is affordable, why the income is being requested, what a missed payment would trigger, and how the two requirements fit together—so that she no longer has to cancel the process or make a phone call.
+- **Strategic outcome , what behaviour change do you expect, and how does it map to retention / revenue / churn?:** Mara stays within the portal; she reviews affordability, the reason for the income inquiry, the consequences of missed payments, and whether the two claims can be combined before finally agreeing. Proof of income is requested only in cases of uncertainty. Incoming calls are less frequent and come with full context.
+
+For clients, this strengthens the relationship because the collection process remains transparent and does not rely on payment plans destined to fail immediately. Revenue is generated from plans that are actually honored and from reduced rework, rather than from a higher volume of short-lived promises. For proprietary portfolios, this protects long-term value. The self-service rate counts the creation of a plan as a successful outcome, but this does not confirm whether the plans are actually maintained.
+
+In this scenario, "churn" is defined as exiting the portal: only 22% start the process, and 31% of those who do so call within seven days. There is no evidence of customers switching to a different debt collection product.
+- **Primary success metric (initiative signal) , the leading indicator that tells you the gap is closing:** The leading indicator is the proportion of users who start the process, view all four key points in the portal before making a decision, and do not contact a staff member within seven days: the affordable payment amount, the reason for the income inquiry, the consequences of a missed payment, and the consolidation of the two debts.
+
+Currently, 31% of those who start the process call within seven days. If this figure drops while the four points are displayed prior to the decision, the gap closes. The self-service rate itself is not the leading indicator, as it counts the creation of the plan as a completed transaction; the actual retention of the plan is only revealed by whether a payment default occurs within 60 days.
+- **Guardrail metric (product signal) , the metric that must NOT drop; it protects your existing base:** The adherence rate for new installment agreements during the first 60 days must not drop. Currently, a payment is missed within 60 days for 19% of new agreements, meaning the rate stands at 81%.
+
+This metric protects consumers, clients, and the value of purchased portfolios. An increase in digital commitments and a reduction in calls must not drive this rate down. The self-service rate does not safeguard this baseline, as it counts the plan as a success the moment it is created.
+- **Decision window , how much time or data before you scale, pivot, or kill? minimum threshold to proceed?:** Wait 60 days for the scaling phase. The leading indicator is readable after 7 days, whereas the guardrail indicator only becomes readable once it is clear whether the new commitments are being honored.
+
+Proceed if two thresholds are met simultaneously. Among individuals who viewed all four points prior to the decision, fewer than 31% contact a staff member within 7 days. With these same commitments, the 60-day default rate remains at or below 19%. Uncertain or vulnerable cases continue to reach a staff member, with all inputs, justifications, and case histories available.
+
+Change course if the four points are displayed but the call rate nonetheless remains at 31%. Halt the process if the self-service rate rises—driven by an increase in the creation of plans—but the 60-day default rate climbs above 19%. In this scenario, the gap is not closing; instead, more plans are being created that are not honored.
+- **Draft your full hypothesis sentence , one to three sentences; quote the metric, name the persona, name the outcome:** Based on the qualitative and quantitative data, I anticipate that Spotlight will enable Mara to view—prior to acceptance—details regarding affordability, the reason for the income inquiry, the consequences of missed payments, and the consolidation of both debts within the portal, allowing her to finalize the plan without needing to call. Success will be measured by the proportion of users who initiate this process but subsequently contact a staff member within seven days dropping below the current baseline of 31%. Throughout this period, the retention rate for new contracts during the first 60 days must not fall below 81%; after 60 days, I will decide whether to scale up, pivot, or discontinue the initiative.
