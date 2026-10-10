@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spotlight roadmap · Riverty BU Collection</title>
+  <style>
+    :root {
+      --green: #527A42;
+      --sage: #86A27B;
+      --ink: #282828;
+      --muted: #686868;
+      --paper: #F3F1F0;
+      --coral: #EF706B;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Aptos, "Segoe UI", sans-serif;
+    }
+
+    body { min-height: 100vh; }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 28px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-end;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--sage);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 40px;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .sub {
+      margin: 10px 0 0;
+      max-width: 52ch;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .team {
+      margin: 0;
+      text-align: right;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .team strong { display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 22px 0 18px;
+    }
+
+    button.chip, button.text {
+      border: 1px solid var(--sage);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    button.chip[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    button.text { margin-left: auto; }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .lane {
+      min-height: 280px;
+      background: transparent;
+    }
+
+    .lane-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--sage);
+    }
+
+    .lane[data-lane="now"] .lane-head { border-bottom-color: var(--green); }
+
+    .lane h2 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .count { color: var(--muted); font-size: 13px; }
+
+    .drop {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 220px;
+      padding: 2px;
+    }
+
+    .drop.over { outline: 1px dashed var(--green); outline-offset: 4px; }
+
+    article.card {
+      border: 1px solid var(--sage);
+      background: var(--paper);
+      padding: 14px 14px 12px;
+      cursor: grab;
+    }
+
+    article.card:active { cursor: grabbing; }
+    article.card.hidden { display: none; }
+
+    .card h3 {
+      margin: 10px 0 6px;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    .meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .why {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .q-quick { background: var(--green); color: var(--paper); }
+    .q-big { background: var(--ink); color: var(--paper); }
+    .q-fill { background: var(--muted); color: var(--paper); }
+    .q-sink { background: var(--coral); color: var(--ink); }
+    .q-cut { background: var(--coral); color: var(--paper); }
+
+    .cut {
+      margin-top: 28px;
+    }
+
+    .cut h2 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+
+    .cut .drop {
+      min-height: 88px;
+      border: 1px solid var(--coral);
+      padding: 10px;
+    }
+
+    .hint {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .team { text-align: left; }
+      .board { grid-template-columns: 1fr; }
+      button.text { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <p class="eyebrow">Riverty · BU Collection · Germany pilot</p>
+        <h1>Spotlight</h1>
+        <p class="sub">Drag a card to move it. The primary signal is starters who see all four answers and do not call within 7 days. The keep rate through 60 days must stay at or above 81%.</p>
+      </div>
+      <p class="team"><strong>Team</strong>Instalment journey<br>Portal, payments, and agent handoff</p>
+    </header>
+
+    <div class="filters" role="toolbar" aria-label="Filter by quadrant">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="quick" aria-pressed="false">Quick win</button>
+      <button class="chip" type="button" data-filter="big" aria-pressed="false">Big bet</button>
+      <button class="chip" type="button" data-filter="fill" aria-pressed="false">Fill-in</button>
+      <button class="chip" type="button" data-filter="sink" aria-pressed="false">Time sink</button>
+      <button class="text" type="button" id="reset">Reset board</button>
+    </div>
+
+    <section class="board" aria-label="Roadmap">
+      <section class="lane" data-lane="now">
+        <div class="lane-head"><h2>Now · this sprint</h2><span class="count" data-count="now"></span></div>
+        <div class="drop" data-lane="now"></div>
+      </section>
+      <section class="lane" data-lane="next">
+        <div class="lane-head"><h2>Next · following sprints</h2><span class="count" data-count="next"></span></div>
+        <div class="drop" data-lane="next"></div>
+      </section>
+      <section class="lane" data-lane="later">
+        <div class="lane-head"><h2>Later · backlog</h2><span class="count" data-count="later"></span></div>
+        <div class="drop" data-lane="later"></div>
+      </section>
+    </section>
+
+    <section class="cut">
+      <h2>Cut list</h2>
+      <div class="drop" data-lane="cut"></div>
+      <p class="hint">Items removed from the pilot. Drop a card here to cut it.</p>
+    </section>
+  </main>
+
+  <script>
+    const QUADRANTS = {
+      quick: ["Quick win", "q-quick"],
+      big: ["Big bet", "q-big"],
+      fill: ["Fill-in", "q-fill"],
+      sink: ["Time sink", "q-sink"],
+      cut: ["Cut", "q-cut"]
+    };
+
+    const SEED = [
+      ["now", "quick", "“Why we ask” on every income question", "Value 5 · Effort 1", "Answers one of the four points on fields the portal already has."],
+      ["now", "quick", "Consequence explainer before commit", "Value 5 · Effort 1", "Before she agrees, states what a missed payment or a wrong answer triggers, and lets her adjust."],
+      ["now", "quick", "Single view of both claims", "Value 5 · Effort 2", "Shows both claims and the total, with the option to arrange them together, so that point is not left open."],
+      ["now", "quick", "Variable-income input", "Value 5 · Effort 2", "A low-to-high range makes the affordable instalment true for shift income. A single figure can be shown and still be wrong for Mara."],
+      ["now", "quick", "Document guidance and quick check", "Value 5 · Effort 2", "Says which documents count and offers alternatives, so the proof request does not become the call. 28% of uploads need clarification today."],
+      ["now", "quick", "Affordability guidance, not just a maximum", "Value 5 · Effort 3", "Shows a comfortable range and the reasoning. The default is never the highest payment, so the 60-day keep rate stays at or above 81%."],
+      ["next", "fill", "Visible support path for vulnerable consumers", "Value 3 · Effort 2", "Must be in place before more consumers see the pilot. It does not answer Mara’s four questions, and it creates contact on purpose."],
+      ["next", "big", "Outcome instrumentation", "Value 4 · Effort 4", "A thin slice measures the four steps, contact within 7 days, and the 60-day keep rate. The broad comparison cut follows. It does not change the phone moment, so it is not first."],
+      ["later", "fill", "Agent handoff summary", "Value 2 · Effort 3", "Gives Daniel the inputs after Mara has already called. The 31% who call within 7 days does not fall because the summary exists."],
+      ["later", "fill", "Plan confirmation and payment reminders", "Value 2 · Effort 2", "Acts after commitment. The 19% who miss a payment within 60 days does not show that a reminder is the cause or the fix."],
+      ["cut", "cut", "AI image-quality check", "Cut from document guidance", "Optional model on top of the proof step. Plain guidance and a human fallback carry the 28% clarification load. The pilot does not wait on it."]
+    ];
+
+    const KEY = "spotlight-roadmap-v1";
+    const board = {};
+    document.querySelectorAll(".drop").forEach((zone) => { board[zone.dataset.lane] = zone; });
+
+    function cardTemplate(item) {
+      const [lane, quadrant, name, meta, why] = item;
+      const [label, cls] = QUADRANTS[quadrant];
+      const el = document.createElement("article");
+      el.className = "card";
+      el.draggable = true;
+      el.dataset.quadrant = quadrant;
+      el.dataset.home = lane;
+      el.innerHTML =
+        '<span class="badge ' + cls + '">' + label + "</span>" +
+        "<h3></h3><p class=\"meta\"></p><p class=\"why\"></p>";
+      el.querySelector("h3").textContent = name;
+      el.querySelector(".meta").textContent = meta;
+      el.querySelector(".why").textContent = why;
+      el.addEventListener("dragstart", () => {
+        el.classList.add("dragging");
+        el.setAttribute("id", el.getAttribute("id") || ("c" + Math.random().toString(36).slice(2, 8)));
+      });
+      el.addEventListener("dragend", () => {
+        el.classList.remove("dragging");
+        document.querySelectorAll(".drop").forEach((z) => z.classList.remove("over"));
+        save();
+        recount();
+      });
+      return el;
+    }
+
+    function paint(data) {
+      Object.values(board).forEach((zone) => { zone.replaceChildren(); });
+      data.forEach((item) => {
+        const lane = item[0];
+        if (board[lane]) board[lane].appendChild(cardTemplate(item));
+      });
+      recount();
+    }
+
+    function snapshot() {
+      const rows = [];
+      Object.entries(board).forEach(([lane, zone]) => {
+        zone.querySelectorAll(".card").forEach((card) => {
+          rows.push([
+            lane,
+            card.dataset.quadrant,
+            card.querySelector("h3").textContent,
+            card.querySelector(".meta").textContent,
+            card.querySelector(".why").textContent
+          ]);
+        });
+      });
+      return rows;
+    }
+
+    function save() {
+      localStorage.setItem(KEY, JSON.stringify(snapshot()));
+    }
+
+    function recount() {
+      document.querySelectorAll("[data-count]").forEach((node) => {
+        const lane = node.dataset.count;
+        const n = board[lane].querySelectorAll(".card:not(.hidden)").length;
+        node.textContent = n + (n === 1 ? " card" : " cards");
+      });
+    }
+
+    function applyFilter(name) {
+      document.querySelectorAll(".card").forEach((card) => {
+        const show = name === "all" || card.dataset.quadrant === name;
+        card.classList.toggle("hidden", !show);
+      });
+      recount();
+    }
+
+    document.querySelectorAll(".drop").forEach((zone) => {
+      zone.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        zone.classList.add("over");
+      });
+      zone.addEventListener("dragleave", () => zone.classList.remove("over"));
+      zone.addEventListener("drop", (event) => {
+        event.preventDefault();
+        zone.classList.remove("over");
+        const card = document.querySelector(".card.dragging");
+        if (!card) return;
+        zone.appendChild(card);
+        if (zone.dataset.lane === "cut") {
+          card.dataset.quadrant = "cut";
+          const badge = card.querySelector(".badge");
+          badge.className = "badge q-cut";
+          badge.textContent = "Cut";
+        }
+        save();
+        recount();
+      });
+    });
+
+    document.querySelectorAll(".chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach((other) => {
+          other.setAttribute("aria-pressed", other === chip ? "true" : "false");
+        });
+        applyFilter(chip.dataset.filter);
+      });
+    });
+
+    document.getElementById("reset").addEventListener("click", () => {
+      localStorage.removeItem(KEY);
+      paint(SEED);
+      document.querySelectorAll(".chip").forEach((chip) => {
+        chip.setAttribute("aria-pressed", chip.dataset.filter === "all" ? "true" : "false");
+      });
+    });
+
+    let stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (err) { stored = null; }
+    paint(Array.isArray(stored) && stored.length ? stored : SEED);
+  </script>
+</body>
+</html>
