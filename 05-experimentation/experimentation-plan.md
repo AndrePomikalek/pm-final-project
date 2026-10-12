@@ -1,25 +1,37 @@
-# Experimentation Plan
+# Experimentation Plan (Module 5)
 
-> **Module 5 · ★ Deliverable 5.** Repo file `05-experimentation/experimentation-plan.md` — part of your submission.
-> Do the lab in the **Module 5 · Exercise Guide** (linked from the Module 5 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It becomes the **Experimentation Plan** slide of your Module 6 final deck.
+## Get your documents ready
+- **From M3, your hypothesis sentence:** Affordability guidance leads Mara to see a comfortable instalment and one sentence about the income already stored before she decides. The share of starters who contact an agent within 7 days falls by at least 5 percentage points, from 31% to 26% or lower, with a two-sided p-value below 0.05. The share of new agreements kept through the first 60 days stays at or above 81%. There is no ship decision on day 21.
+- **From M3, your primary success metric & guardrail metric:** Primary metric: share of starters who contact an agent within 7 days. Baseline 31%. It counts the call. It does not count abandonment, and it does not show whether Mara understood the instalment.
+Guardrail: share of new agreements kept through the first 60 days. Floor 81%. Today, 19% miss a payment. This is a different measure from the call rate.
+- **From M4, the feature you scoped in your PRD this is what you're testing:** Affordability guidance, not just a maximum. Exactly one change on the plan step: a comfortable instalment is preselected and marked, the maximum is visible and not selected, one sentence names the stored income, and confirmation opens only when both the instalment and the sentence are on screen. Entry, portal, income, maximum, proof, both claims, missed-payment consequences, and the handoff to Daniel stay unchanged.
 
-## Overview
+## Define your experiment parameters
+- **Feature under test pull from your M4 PRD:** Affordability guidance, not just a maximum. Preselect one comfortable instalment, strictly below the maximum, and label it comfortable. Show the maximum, unselected. On the same screen, show one sentence that names the income already stored. Keep confirmation closed until both the instalment and the sentence are visible. Confirmation repeats the selected monthly amount.
+- **Persona pull your M2 persona:** Mara. A consumer in the Germany pilot, shift work, one or more open claims, little time, alone on her smartphone after the digital reminder.
+- **Expected outcome the behaviour change you expect, from your M3 hypothesis:** Before she decides, she sees the comfortable instalment and the reason, and the share of starters who call within 7 days falls.
+- **Primary success metric the one number that defines success, from M3:** Share of starters who contact an agent within 7 days.
+- **Baseline rate today's rate of your primary metric, from your M3 data:** 31%
+- **Guardrail metric & boundary what must not break, and how far it can move before you investigate:** Share of new agreements kept through the first 60 days. It must not fall below 81%. Today, 19% miss a payment. Stop the test if the miss rate in an arm rises above 19%. The highest instalment is preselected in 0% of agreements.
+- **Minimum Detectable Effect (MDE) the smallest improvement worth shipping, your floor:** 5 percentage points, from 31% to 26% calling. That is the smallest drop worth shipping.
+- **Sample size per arm use the calculator in the builder, baseline + MDE:** 1,398 starters. Baseline 31%, MDE 5 percentage points, 80% power, two-sided, p < 0.05.
+- **Traffic split & test duration 50/50 standard · cover ≥ 2 weekly cycles:** 50/50. 14 days of enrollment plus 7 days of follow-up. Do not ship on day 21. Read the guardrail only after 60 days. If the Germany segment cannot supply 1,398 starters per arm in 14 days, extend enrollment. Do not lower the MDE.
+- **Significance threshold p < 0.05 is standard, explain any deviation:** p < 0.05, two-sided. No deviation from the standard.
 
-_A high-level validation strategy to test your hypothesis before full-scale development._
+## Define your control and variant
+- **Control (A) the current experience, reference your M2 moment of misery and M3 funnel/workflow data:** Mara opens the plan step on her phone after the reminder. Her income is already stored, and she has little time. She cannot tell whether an instalment is affordable, so she abandons the journey or calls. Only 22% of portal visitors start an instalment journey. 31% of starters contact an agent within 7 days. 28% of uploaded income documents need clarification. The unchanged plan step does not preselect a comfortable instalment, does not mark one, and gives no reason tied to the income already stored.
+- **Variant (B) your single change, copy the relevant screens & functional requirements from your M4 PRD:** 1. Entry: the plan step opens with the income figure already stored. No new income field. This matches the control.
+2. Core: one comfortable instalment is preselected and marked, with one sentence of reasoning beside it. The maximum is shown and is not selected.
+3. Confirmation: the chosen monthly instalment and the same reason are repeated. She can reach this screen only from the core screen.
 
-_____
+The system preselects exactly one instalment. It sits strictly below the maximum monthly amount and is labelled comfortable. The maximum is visible and is not preselected. One sentence of reasoning appears on the same screen and includes the income amount already stored. Confirmation stays closed until both the comfortable instalment and the sentence are rendered. Confirmation repeats the selected monthly amount.
+- **Isolation check, what has NOT changed? list everything identical between arms (app version, recommendation engine, notifications, onboarding). If something changed inadvertently, your test is compromised.:** The same portal, app version, onboarding, reminders, and outreach. The same stored income and the same maximum. No new income field, no income range, no document upload, no combining of claims, no missed-payment copy, no model, and no login, settings, or history. “Why we ask,” the consequence explainer, the single view of both claims, document guidance, and the handoff to Daniel stay as they are today.
 
-## What you're testing
-
-| Element | Detail |
-|---|---|
-| Hypothesis under test | _____ |
-| Experiment design (A/B, etc.) | _____ |
-| Primary metric | _____ |
-| Guardrail metric | _____ |
-| Decision rule (ship / kill / pivot) | _____ |
-
-## Findings & decision _(after running it)_
-
-_____
+## Formalize your hypothesis & shipping criteria
+- **Your hypothesis (filled in):** I expect Affordability guidance, not just a maximum, to lead Mara to see a comfortable instalment and one sentence about the income already stored before she decides, measured by a drop of at least 5 percentage points in the share of starters who contact an agent within 7 days, from 31% to 26% or lower, over 14 days of enrollment plus 7 days of follow-up. We will protect the share of new agreements kept through the first 60 days, which must stay at or above 81%, for the whole test.
+- **Your shipping criteria (filled in):** Read the call rate only after 14 days of enrollment plus 7 days of follow-up, with at least 1,398 starters in each arm. Do not use any earlier cut.
+Ship only if all three are true: the 7-day contact rate in B is at least 5 percentage points below A, the two-sided p-value is under 0.05, and 60 days after agreement the keep rate in B is at least 81%. The highest instalment was preselected in 0% of B agreements.
+Iterate if the call rate falls but by less than 5 percentage points, or the direction is right and p is 0.05 or higher.
+Stop if the call rate does not fall or rises, or if the keep rate in B falls below 81%, even when calls fell.
+Do not ship on day 21. The guardrail is not readable yet.
+- **Hardest parameter to define, and did it change your hypothesis? quick debrief:** The test duration. The call rate can be read after 21 days. The keep rate cannot. The hypothesis no longer says to ship when calls fall. It now waits for the 60-day keep rate, and it no longer treats fewer calls as proof that Mara understood the instalment.
